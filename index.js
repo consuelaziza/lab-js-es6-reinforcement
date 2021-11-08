@@ -1,24 +1,33 @@
 // ***************************************************************************
 // Iteration 1 - `for...of` loop
 // ***************************************************************************
+let usersArray = require('./data')
 
 const getFirstNames = arr => {
   const userFirstNames = [];
   for (let user of arr) {
-    // Your code goes here ...
+    userFirstNames.push(user.firstName)
+    return userFirstNames;
+   
+  
   }
 };
 
 getFirstNames(usersArray);
 // expected output:
-// [ 'Kirby', 'Tracie', 'Kendra', 'Kinney', 'Howard', 'Rachelle', 'Lizzie' ]
+//node i[ 'Kirby', 'Tracie', 'Kendra', 'Kinney', 'Howard', 'Rachelle', 'Lizzie' ]
 
 // ***************************************************************************
 // Iteration 2 - `for...of` loop and ES6 string literals `${}`
 // ***************************************************************************
 
 const getFullNames = arr => {
-  // Your code goes here ...
+  const userFullNames = [];
+  for (let user of arr) {
+    userFullNames.push(`${user.firstName}  ${user.lastName}`)
+     
+  }
+  return userFullNames;
 };
 
 getFullNames(usersArray);
@@ -31,7 +40,13 @@ getFullNames(usersArray);
 // ***************************************************************************
 
 const getUsersCreditDetails = arr => {
-  // Your code goes here ...
+  const usersCreditDetails = [];
+  for (let user of arr) {
+    let {firstName, lastName, balance } = user
+    usersCreditDetails.push({firstName , lastName, balance })
+    
+  }
+ return usersCreditDetails;
 };
 
 getUsersCreditDetails(usersArray);
@@ -49,7 +64,21 @@ getUsersCreditDetails(usersArray);
 // ***************************************************************************
 
 const genderView = users => {
-  // Your code goes here ...
+  let females = users.filter( (element) => {
+    return element.gender === 'female';
+  })
+   
+
+  let males = users.filter( (element) => {
+    return element.gender === 'male';
+  })
+
+  let femaleUsers = getFullNames(females);
+  let maleUsers = getFullNames(males);
+  
+  
+ 
+  console.log({femaleUsers, maleUsers });
 };
 
 genderView(usersArray);
@@ -90,7 +119,7 @@ const promo20 = users => {
 // Bonus - Iteration 7
 // ***************************************************************************
 
-const addActive = users => {
+/*const addActive = users => {
   // Your code goes here ...
 };
 
@@ -107,4 +136,4 @@ addActive(usersArray);
 //    {
 //      // ...
 //    }
-// ]
+// ]*/
